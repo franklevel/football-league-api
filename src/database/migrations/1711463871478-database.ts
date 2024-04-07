@@ -33,12 +33,10 @@ export class Database1711463871478 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    // Truncate tables with no foreign key constraints
     await queryRunner.query(
       `TRUNCATE TABLE notifier_db.user_notification_channels_channel;`
     );
 
-    // Truncate tables with foreign key constraints
     await queryRunner.query(
       `DELETE FROM notifier_db.user_subscribed_categories_category;`
     );

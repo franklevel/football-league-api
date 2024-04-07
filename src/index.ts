@@ -1,12 +1,20 @@
 import "reflect-metadata";
 import express, { Application } from "express";
-import { notificationRouter } from "./routes/notificationRoutes";
-import { categoryRouter } from "./routes/categoryRoutes";
+import { ApolloServer } from "apollo-server-express";
 import { AppDataSource } from "./config/ormconfig";
 import cors from "cors";
+import { typeDefs } from "./graphql/schema";
+import { resolvers } from "./graphql/resolvers";
+import { competitionRouter } from "./routes/competitionRoutes";
 
 const app: Application = express();
 const PORT: number = 8000;
+
+(async (app) => {
+  const server = new ApolloServer({ typeDefs, resolvers });
+  await server.start();
+  server.applyMiddleware({ app });
+})(app);
 
 (async () => {
   const initPostgres = async () => {
@@ -32,8 +40,8 @@ const PORT: number = 8000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/notifications", notificationRouter);
-app.use("/categories", categoryRouter);
+
+app.use("/competitions", competitionRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
