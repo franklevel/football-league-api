@@ -15,9 +15,9 @@ const teamRepository = new TeamRepository();
 const teamService = new TeamService(teamRepository);
 
 const Query = {
-  getCompetition: async (_, { code }) => {
+  getCompetition: async (_, { leagueCode }) => {
     try {
-      const competition = await competitionService.findOne(code);
+      const competition = await competitionService.findOne(leagueCode);
       return competition;
     } catch (error) {
       throw new Error("Failed to get competition");
@@ -31,9 +31,9 @@ const Query = {
       throw new Error("Failed to get all competitions");
     }
   },
-  getTeam: async (_, { teamId }) => {
+  getTeam: async (_, { name }) => {
     try {
-      const team = await teamService.findOne(teamId);
+      const team = await teamService.findOne(name);
       return team;
     } catch (error) {
       throw new Error(`Failed to get team details: Error: ${error}`);
@@ -50,9 +50,9 @@ const Query = {
 };
 
 const Mutation = {
-  importLeague: async (_, { code }) => {
+  importLeague: async (_, { leagueCode }) => {
     try {
-      const competition = await competitionService.import(code);
+      const competition = await competitionService.import(leagueCode);
       return competition;
     } catch (error) {
       throw new Error("Failed to create competition");

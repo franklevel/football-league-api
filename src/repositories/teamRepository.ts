@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { Like, Repository } from "typeorm";
 import { Team } from "../entities/Team.entity";
 import { AppDataSource } from "../config/ormconfig";
 import { TeamRepositoryInterface } from "../interfaces/teamRepositoryInterface";
@@ -10,10 +10,10 @@ export class TeamRepository implements TeamRepositoryInterface {
     this.teamRepository = AppDataSource.getRepository(Team);
   }
 
-  async findOne(teamId: string): Promise<Team> {
+  async findOne(name: string): Promise<Team> {
     return await this.teamRepository.findOne({
-      where: { id: teamId },
-      relations: ["coach", "players"],
+      where: [{ name: Like(`%${name}%`) }, { shortName: Like(`%${name}%`) }],
+      relations: ["coach"],
     });
   }
 }

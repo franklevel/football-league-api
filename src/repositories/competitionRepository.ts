@@ -10,8 +10,11 @@ export class CompetitionRepository implements CompetitionRepositoryInterface {
     this.competitionRepository = AppDataSource.getRepository(Competition);
   }
 
-  async findOne(competitionId: string): Promise<Competition> {
-    return this.competitionRepository.findOneBy({ id: competitionId });
+  async findOne(code: string): Promise<Competition> {
+    return this.competitionRepository.findOne({
+      where: { code },
+      relations: ["teams"],
+    });
   }
 
   async findAll(): Promise<Competition[]> {

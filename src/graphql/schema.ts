@@ -5,6 +5,7 @@ export const typeDefs = gql`
     name: String!
     code: String!
     areaName: String!
+    teams: [Team]
   }
 
   type Player { 
@@ -34,13 +35,13 @@ export const typeDefs = gql`
   }
 
   type Query {
-    getCompetition(code: String!): Competition
+    getCompetition(leagueCode: String!): Competition
     getAllCompetitions: [Competition]
     getPlayer(id: String!): Player
-    getTeam(teamId: String!): Team
+    getTeam(name: String!): Team
   }
 
   type Mutation {
-    importLeague(code: String!): Competition
+    importLeague(leagueCode: String!): Competition
   }
 `;
