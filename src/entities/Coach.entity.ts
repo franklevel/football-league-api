@@ -8,9 +8,9 @@ export class Coach {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   dateOfBirth: string;
 
-  @Column()
+  @Column({ nullable: true })
   nationality: string;
 }

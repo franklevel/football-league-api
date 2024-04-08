@@ -63,7 +63,7 @@ const Mutation = {
       const competition = await competitionService.import(leagueCode);
       return competition;
     } catch (error) {
-      throw new Error(`Failed to create competition. Error: ${error}`);
+      throw new Error(error);
     }
   },
 };

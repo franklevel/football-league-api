@@ -29,7 +29,7 @@ export class CompetitionRepository implements CompetitionRepositoryInterface {
     return this.competitionRepository.find();
   }
 
-  async save(competition: Competition): Promise<void> {
-    await this.competitionRepository.save(competition);
+  async save(competition: Competition): Promise<Competition> {
+    return await this.competitionRepository.save(competition);
   }
 }

@@ -14,8 +14,14 @@ export class CompetitionService implements CompetitionServiceInterface {
     return await this.competitionRepository.findAll();
   }
 
-  async findOne(competitionId: string, teamName?: string): Promise<Competition> {
-    const competition = await this.competitionRepository.findOne(competitionId, teamName);
+  async findOne(
+    competitionId: string,
+    teamName?: string
+  ): Promise<Competition> {
+    const competition = await this.competitionRepository.findOne(
+      competitionId,
+      teamName
+    );
     if (!competition) {
       throw new Error("Competition not found");
     }
@@ -23,7 +29,7 @@ export class CompetitionService implements CompetitionServiceInterface {
     return competition;
   }
 
-  async import(code: string): Promise<void> {
+  async import(code: string): Promise<Competition> {
     const response = await fetch(`${BASE_API_URL}competitions/${code}/teams`, {
       method: "GET",
       headers: {
@@ -31,15 +37,18 @@ export class CompetitionService implements CompetitionServiceInterface {
       },
       redirect: "follow",
     });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+    }
+
     const data = await response.json();
 
     if (!data) {
-      throw new Error("Error on fetching data");
+      throw new Error("No data received from the server");
     }
 
     const competition = mapCompetition(data);
-    const result = await this.competitionRepository.save(competition);
-
-    return result;
+    return await this.competitionRepository.save(competition);
   }
 }

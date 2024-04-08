@@ -29,9 +29,11 @@ export function mapTeams(data: TeamInputDTO): TeamDTO[] {
     newTeam.address = address;
     newTeam.coach = newCoach;
 
-    const players = mapPlayers(squad);
-    newTeam.players = players;
-    console.log(newTeam.players);
+    // This meets the rule of importing players when team squad has players
+    if (squad.length > 0) {
+      const players = mapPlayers(squad);
+      newTeam.players = players;
+    }
 
     return newTeam;
   });
