@@ -14,8 +14,13 @@ export class CompetitionService implements CompetitionServiceInterface {
     return await this.competitionRepository.findAll();
   }
 
-  async findOne(competitionId: string): Promise<Competition> {
-    return await this.competitionRepository.findOne(competitionId);
+  async findOne(competitionId: string, teamName?: string): Promise<Competition> {
+    const competition = await this.competitionRepository.findOne(competitionId, teamName);
+    if (!competition) {
+      throw new Error("Competition not found");
+    }
+    console.log(competition);
+    return competition;
   }
 
   async import(code: string): Promise<void> {
@@ -27,13 +32,14 @@ export class CompetitionService implements CompetitionServiceInterface {
       redirect: "follow",
     });
     const data = await response.json();
-    
+
     if (!data) {
       throw new Error("Error on fetching data");
     }
 
     const competition = mapCompetition(data);
-    console.log(JSON.stringify(competition, null, 2));
-    await this.competitionRepository.save(competition);
+    const result = await this.competitionRepository.save(competition);
+
+    return result;
   }
 }

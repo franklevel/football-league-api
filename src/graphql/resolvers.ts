@@ -15,12 +15,20 @@ const teamRepository = new TeamRepository();
 const teamService = new TeamService(teamRepository);
 
 const Query = {
-  getCompetition: async (_, { leagueCode }) => {
+  getPlayers: async (_, { leagueCode, teamName }) => {
     try {
-      const competition = await competitionService.findOne(leagueCode);
-      return competition;
+      const competition = await competitionService.findOne(
+        leagueCode,
+        teamName
+      );
+      const players = competition.teams
+        .map((team) => team.players)
+        .map((player) => player);
+
+      console.log(players);
+      return players.flat();
     } catch (error) {
-      throw new Error("Failed to get competition");
+      throw new Error(error);
     }
   },
   getAllCompetitions: async () => {
