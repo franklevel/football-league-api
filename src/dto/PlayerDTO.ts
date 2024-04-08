@@ -1,4 +1,4 @@
-import TeamMemberDTO from "./TeamMemberDTO";
+import TeamMemberDTO from "@dto/TeamMemberDTO";
 
 export interface PlayerDTO extends TeamMemberDTO {
   id: string;

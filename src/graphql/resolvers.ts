@@ -1,9 +1,9 @@
-import { CompetitionService } from "../services/competitionService";
-import { CompetitionRepository } from "../repositories/competitionRepository";
-import { PlayerRepository } from "../repositories/playerRepository";
-import { PlayerService } from "../services/playerService";
-import { TeamRepository } from "../repositories/teamRepository";
-import { TeamService } from "../services/teamService";
+import { CompetitionService } from "@services/competitionService";
+import { CompetitionRepository } from "@repositories/competitionRepository";
+import { PlayerRepository } from "@repositories/playerRepository";
+import { PlayerService } from "@services/playerService";
+import { TeamRepository } from "@repositories/teamRepository";
+import { TeamService } from "@services/teamService";
 
 const competitionRepository = new CompetitionRepository();
 const competitionService = new CompetitionService(competitionRepository);

@@ -18,7 +18,7 @@ export const typeDefs = gql`
     id: String!
     name: String!
     position: String!
-    nationality: String!
+    nationality: String
     dateOfBirth: String
   }
 

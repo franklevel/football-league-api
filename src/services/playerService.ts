@@ -1,6 +1,6 @@
-import { PlayerServiceInterface } from "../interfaces/playerServiceInterface";
-import { PlayerRepositoryInterface } from "../interfaces/playerRepositoryInterface";
-import { Player } from "../entities/Player.entity";
+import { PlayerServiceInterface } from "@interfaces/playerServiceInterface";
+import { PlayerRepositoryInterface } from "@interfaces/playerRepositoryInterface";
+import { Player } from "@entities/Player.entity";
 
 
 export class PlayerService implements PlayerServiceInterface {

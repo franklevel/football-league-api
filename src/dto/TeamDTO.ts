@@ -1,4 +1,4 @@
-import CoachDTO from "./CoachDTO";
+import CoachDTO from "@dto/CoachDTO";
 
 export interface TeamDTO {
   id: string;

@@ -1,7 +1,7 @@
 import { Like, Repository } from "typeorm";
-import { Team } from "../entities/Team.entity";
-import { AppDataSource } from "../config/ormconfig";
-import { TeamRepositoryInterface } from "../interfaces/teamRepositoryInterface";
+import { Team } from "@entities/Team.entity";
+import { AppDataSource } from "@config/ormconfig";
+import { TeamRepositoryInterface } from "@interfaces/teamRepositoryInterface";
 
 export class TeamRepository implements TeamRepositoryInterface {
   private teamRepository: Repository<Team>;

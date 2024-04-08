@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
-import { Competition } from "../entities/Competition.entity";
-import { AppDataSource } from "../config/ormconfig";
-import { CompetitionRepositoryInterface } from "../interfaces/competitionRepositoryInterface";
+import { Competition } from "@entities/Competition.entity";
+import { AppDataSource } from "@config/ormconfig";
+import { CompetitionRepositoryInterface } from "@interfaces/competitionRepositoryInterface";
 
 export class CompetitionRepository implements CompetitionRepositoryInterface {
   private competitionRepository: Repository<Competition>;

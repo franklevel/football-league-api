@@ -1,9 +1,9 @@
-import { CompetitionServiceInterface } from "../interfaces/competitionServiceInterface";
-import { CompetitionRepositoryInterface } from "../interfaces/competitionRepositoryInterface";
-import { Competition } from "../entities/Competition.entity";
-import { mapCompetition } from "../mappers/CompetitionMapper";
-import { fetchData } from "../utils/fetchData";
-import { BASE_API_URL } from "../utils/constants";
+import { CompetitionServiceInterface } from "@interfaces/competitionServiceInterface";
+import { CompetitionRepositoryInterface } from "@interfaces/competitionRepositoryInterface";
+import { Competition } from "@entities/Competition.entity";
+import { mapCompetition } from "@mappers/CompetitionMapper";
+import { fetchData } from "@utils/fetchData";
+import { BASE_API_URL } from "@utils/constants";
 
 export class CompetitionService implements CompetitionServiceInterface {
   constructor(

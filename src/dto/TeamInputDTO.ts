@@ -1,6 +1,6 @@
-import CoachDTO from "./CoachDTO";
-import CompetitionDTO from "./CompetitionDTO";
-import TeamDTO from "./TeamDTO";
+import CoachDTO from "@dto/CoachDTO";
+import CompetitionDTO from "@dto/CompetitionDTO";
+import TeamDTO from "@dto/TeamDTO";
 
 export interface TeamDetailsDTO {
   id: string;

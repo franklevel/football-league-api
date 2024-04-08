@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
+    "start": "npm run build && node -r tsconfig-paths/register dist/index.js",
     "build": "tsc",
-    "dev": "nodemon --exec ts-node src/index.ts",
     "db:seed": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/config/ormconfig.ts",
     "db:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/config/ormconfig.ts",
+    "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
     "test": "jest",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
@@ -27,6 +27,7 @@
     "graphql": "^16.8.1",
     "mysql2": "^3.9.2",
     "reflect-metadata": "^0.2.1",
+    "tsconfig-paths": "^4.2.0",
     "typeorm": "^0.3.20",
     "typescript": "^5.4.3",
     "uuid": "^9.0.1"
