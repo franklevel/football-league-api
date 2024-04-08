@@ -1,8 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class Player {
@@ -15,7 +11,7 @@ export class Player {
   @Column()
   position: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   dateOfBirth: string;
 
   @Column()

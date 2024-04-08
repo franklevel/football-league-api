@@ -21,8 +21,6 @@ export function mapTeams(data: TeamInputDTO): TeamDTO[] {
     newCoach.nationality = coach.nationality;
     newCoach.dateOfBirth = coach.dateOfBirth;
 
-    const players = mapPlayers(squad);
-
     const newTeam = new Team();
     newTeam.name = name;
     newTeam.tla = tla;
@@ -30,8 +28,11 @@ export function mapTeams(data: TeamInputDTO): TeamDTO[] {
     newTeam.areaName = areaName;
     newTeam.address = address;
     newTeam.coach = newCoach;
+
+    const players = mapPlayers(squad);
     newTeam.players = players;
-    
+    console.log(newTeam.players);
+
     return newTeam;
   });
 }

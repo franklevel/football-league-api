@@ -2,9 +2,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  JoinTable,
   ManyToOne,
-  OneToMany,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
 import { Coach } from "./Coach.entity";
 import { Player } from "./Player.entity";
@@ -30,10 +30,9 @@ export class Team {
   address: string;
 
   @ManyToOne(() => Coach, (coach) => coach.id, { cascade: true })
-  @JoinTable()
   coach: Coach;
 
-  @OneToMany(() => Player, (player) => player.id, { cascade: true })
+  @ManyToMany(() => Player, (player) => player.id, { cascade: true })
   @JoinTable()
   players: Player[];
 }

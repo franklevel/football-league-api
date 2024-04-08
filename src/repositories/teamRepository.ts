@@ -13,7 +13,7 @@ export class TeamRepository implements TeamRepositoryInterface {
   async findOne(name: string): Promise<Team> {
     return await this.teamRepository.findOne({
       where: [{ name: Like(`%${name}%`) }, { shortName: Like(`%${name}%`) }],
-      relations: ["coach"],
+      relations: ["coach", "players"],
     });
   }
 }

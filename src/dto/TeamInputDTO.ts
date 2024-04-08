@@ -3,6 +3,7 @@ import CompetitionDTO from "./CompetitionDTO";
 import TeamDTO from "./TeamDTO";
 
 export interface TeamDetailsDTO {
+  id: string;
   name: string;
   tla: string;
   areaName: string;
