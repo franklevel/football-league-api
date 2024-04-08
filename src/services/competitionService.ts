@@ -2,8 +2,8 @@ import { CompetitionServiceInterface } from "../interfaces/competitionServiceInt
 import { CompetitionRepositoryInterface } from "../interfaces/competitionRepositoryInterface";
 import { Competition } from "../entities/Competition.entity";
 import { mapCompetition } from "../mappers/CompetitionMapper";
-
-const BASE_API_URL = `https://api.football-data.org/v4/`;
+import { fetchData } from "../utils/fetchData";
+import { BASE_API_URL } from "../utils/constants";
 
 export class CompetitionService implements CompetitionServiceInterface {
   constructor(
@@ -30,11 +30,8 @@ export class CompetitionService implements CompetitionServiceInterface {
   }
 
   async import(code: string): Promise<Competition> {
-    const response = await fetch(`${BASE_API_URL}competitions/${code}/teams`, {
+    const response = await fetchData(`${BASE_API_URL}competitions/${code}/teams`, {
       method: "GET",
-      headers: {
-        "X-Auth-Token": "47a55eccef364dc893af2b5a8f7aebf6",
-      },
       redirect: "follow",
     });
 

@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import 'dotenv/config'
 import express, { Application } from "express";
 import cors from "cors";
 import { server as gqlServer } from "./graphql/server";
