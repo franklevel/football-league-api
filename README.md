@@ -8,6 +8,8 @@ Follow these steps to set up and run the API project locally:
 
 ### 1. Navigate to the project folder
 
+Clone this repository and navigate to the project folder
+
 ```bash
 cd football-league-api
 ```
