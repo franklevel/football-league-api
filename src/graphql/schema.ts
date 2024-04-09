@@ -27,6 +27,15 @@ export const typeDefs = gql`
   """
   type Coach {
     id: String!
+    name: String
+    nationality: String
+    dateOfBirth: String
+  }
+
+  """
+  This type represents the input for a coach
+  """
+  input CoachInput {
     name: String!
     nationality: String!
     dateOfBirth: String
@@ -73,5 +82,10 @@ export const typeDefs = gql`
     This mutation import a league by providing a league code
     """
     importLeague(leagueCode: String!): Competition
+    
+    """
+    This mutation sets a coach for a team by providing a team name and coach details
+    """
+    setTeamCoach(teamName: String!, coachInput: CoachInput!): Coach
   }
 `;

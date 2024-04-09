@@ -30,13 +30,18 @@ export class CompetitionService implements CompetitionServiceInterface {
   }
 
   async import(code: string): Promise<Competition> {
-    const response = await fetchData(`${BASE_API_URL}competitions/${code}/teams`, {
-      method: "GET",
-      redirect: "follow",
-    });
+    const response = await fetchData(
+      `${BASE_API_URL}competitions/${code}/teams`,
+      {
+        method: "GET",
+        redirect: "follow",
+      }
+    );
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch data: ${response.status} ${response.statusText}`
+      );
     }
 
     const data = await response.json();

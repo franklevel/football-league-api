@@ -16,4 +16,8 @@ export class TeamRepository implements TeamRepositoryInterface {
       relations: ["coach", "players"],
     });
   }
+
+  async save(team: Team): Promise<Team> {
+    return await this.teamRepository.save(team);
+  }
 }
